@@ -1,0 +1,29 @@
+group 'com.teradata'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.5
+
+repositories {
+    //    使用开源中国的maven仓库
+    mavenLocal()
+    maven { url 'http://192.168.19.200:8081/nexus/content/groups/public' }
+    maven { url 'http://maven.oschina.net/content/groups/public/' }
+//    mavenCentral()
+}
+
+dependencies {
+
+    //导入本地的依赖包
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile('org.apache.commons:commons-lang3:3.3.2')
+    compile('com.jfinal:jfinal:2.0')
+    compile('com.google.inject:guice:4.0')
+    compile('org.mockito:mockito-all:1.10.19')
+    compile('commons-dbutils:commons-dbutils:1.5')
+    compile('log4j:log4j:1.2.16')
+
+}
